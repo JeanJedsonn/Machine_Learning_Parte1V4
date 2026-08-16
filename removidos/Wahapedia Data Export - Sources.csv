@@ -1,0 +1,129 @@
+id,name,type,edition,version,errata_date,errata_link
+12,Chaos Space Marines,Codex,10,1.3,12.09.2025 0:00:00,https://assets.warhammer-community.com/eng_17-09_warhammer40000_codex_faqs_and_errata_chaos_space_marines-zwgzfmq8nc-8ipk105s0s.pdf
+13,Grey Knights,Codex,10,1,14.09.2025 0:00:00,https://assets.warhammer-community.com/eng_17-09_warhammer40000_codex_faqs_and_errata_grey_knights-7g7nl8udjn-vuaiifpjax.pdf
+14,Death Guard,Codex,10,1.1,04.06.2025 0:00:00,https://assets.warhammer-community.com/eng_4-pqkck0qjtu.pdf
+15,Adeptus Mechanicus,Codex,10,1.1,16.10.2024 0:00:00,https://assets.warhammer-community.com/warhammer40000_faqs&errata_adeptusmechanicus_eng_16.10.pdf
+16,Astra Militarum,Codex,10,1.4,12.09.2025 0:00:00,https://assets.warhammer-community.com/eng_17-09_warhammer40000_codex_faqs_and_errata_astra_militarum-zuq9wcs7bg-rovb1pewqp.pdf
+20,Tyranids,Codex,10,1.3,09.07.2025 0:00:00,https://assets.warhammer-community.com/eng_09-07_warhammer40000_codex_faqsanderrata_tyranids-atlfhonwwb-pdbedyunmm.pdf
+21,Blood Angels,Codex Supplement,10,1,16.10.2024 0:00:00,https://assets.warhammer-community.com/warhammer40000_faqs&errata_bloodangels_eng_16.10.pdf
+23,Dark Angels,Codex Supplement,10,1.4,09.07.2025 0:00:00,https://assets.warhammer-community.com/eng_09-07_warhammer40000_codex_faqsanderrata_dark_angels-rpnv8va4bw-4tbusbi0pn.pdf
+24,Adeptus Custodes,Codex,10,1.3,14.05.2025 0:00:00,https://assets.warhammer-community.com/eng_may25_wh40k_codex_faq_adeptus-custodes_v1-3-7mq49b44bb-k8u7oh3bkq.pdf
+25,Chaos Daemons,Index,10,,09.07.2025 0:00:00,https://assets.warhammer-community.com/eng_09-07_warhammer40000_index_chaos_daemons-gceuhmmyhy-5mafgovge4.pdf
+27,Thousand Sons,Codex,10,1.2,12.09.2025 0:00:00,https://assets.warhammer-community.com/eng_17-09_warhammer40000_codex_faqs_and_errata_thousand_sons-jg4sslhkob-yw6xmqwber.pdf
+28,T’au Empire,Codex,10,1.4,09.07.2025 0:00:00,https://assets.warhammer-community.com/eng_09-07_warhammer40000_codex_faqsanderrata_tau_empire-leiskloizy-pfywwtgrol.pdf
+29,Necrons,Codex,10,1.4,12.09.2025 0:00:00,https://assets.warhammer-community.com/eng_17-09_warhammer40000_codex_faqs_and_errata_necrons-7obvhb85bf-avotc421uu.pdf
+31,Drukhari,Index,10,,19.02.2025 0:00:00,https://assets.warhammer-community.com/eng_warhammer40000_drukhari_army_rule-l2feecgpbo-zhnzcysomu.pdf
+34,Imperial Knights,Codex,10,1,12.09.2025 0:00:00,https://assets.warhammer-community.com/eng_17-09_warhammer40000_codex_faqs_and_errata_imperial_knights-cpjabhh92k-5hdzwegedn.pdf
+35,Deathwatch,Index,10,,15.01.2025 0:00:00,https://assets.warhammer-community.com/eng_grotmas_advent_index_deathwatch_jan25-3hkhyr4ern-el7g9t2q0t.pdf
+36,Space Wolves,Codex Supplement,10,1.1,12.09.2025 0:00:00,https://assets.warhammer-community.com/eng_17-09_warhammer40000_codex_faqs_and_errata_space_wolves-snqrutarhh-ajvw8hlsnm.pdf
+46,Orks,Codex,10,1.5,09.07.2025 0:00:00,https://assets.warhammer-community.com/eng_09-07_warhammer40000_codex_faqsanderrata_orks-dky5ikgakr-qer2tyrr00.pdf
+53,Genestealer Cults,Codex,10,1.2,16.10.2024 0:00:00,https://assets.warhammer-community.com/warhammer40000_faqs&errata_genestealercults_eng_16.10.pdf
+70,Chaos Knights,Codex,10,1.2,12.09.2025 0:00:00,https://assets.warhammer-community.com/eng_17-09_warhammer40000_codex_faqs_and_errata_chaos_knights-lyy1pukev9-4l3hicwrh1.pdf
+88,Games Workshop: Da Red Gobbo,Datasheet,10,,03.11.2023 0:00:00,https://www.warhammer-community.com/wp-content/uploads/2023/11/tvW7Dd5Ihf78pINe.pdf
+100,Legends: Tyranids,Datasheet,10,,17.09.2024 0:00:00,https://assets.warhammer-community.com/warhammer40000_legends_tyranids_eng_24.09-zhzcfdwafm.pdf
+112,Adepta Sororitas,Codex,10,1.4,14.05.2025 0:00:00,https://assets.warhammer-community.com/eng_may25_wh40k_codex_faq_adepta_sororitas_v1-4-qgg5mgpe22-yzfpidvp7b.pdf
+139,Space Marines,Codex,10,1.6,12.03.2025 0:00:00,https://assets.warhammer-community.com/eng_warhammer40000_codex_space_marines_march_2025-fgnawcbp3u-0tdebzcivs.pdf
+162,Black Templars,Codex Supplement,10,,26.07.2025 0:00:00,
+166,Balance Dataslate,Rulebook,10,3,12.09.2025 0:00:00,https://assets.warhammer-community.com/eng_17-09_warhammer40000_core_rules_balance_dataslate-a6th8ilhy3-wqkt1aqmya.pdf
+186,Aeldari,Codex,10,1.4,09.07.2025 0:00:00,https://assets.warhammer-community.com/eng_09-07_warhammer40000_codex_faqsanderrata_aeldari-ujycbw7yq5-knkovl9zgn.pdf
+203,Leagues of Votann,Codex,10,1,12.09.2025 0:00:00,https://assets.warhammer-community.com/eng_17-09_warhammer40000_codex_faqs_and_errata_leagues_of_votann-niwf9vyfyi-dd3uilvida.pdf
+210,World Eaters,Codex,10,1.2,14.09.2025 0:00:00,https://assets.warhammer-community.com/eng_17-09_warhammer40000_codex_faqs_and_errata_world-eaters-ggxj5cunf2-avjmamlfiy.pdf
+233,Munitorum Field Manual,Expansion,10,3.3,12.09.2025 0:00:00,https://assets.warhammer-community.com/eng_17-09_warhammer40000_core_rules_munitorum_field_manual-77pqwlym09-klc5vqn1rn.pdf
+234,Imperial Armour: Tyranids,Datasheet,10,,17.09.2024 0:00:00,https://assets.warhammer-community.com/warhammer40000_imperialarmour_tyranids_eng_24.09-z3f8z1qsfg.pdf
+235,Legends Field Manual,Expansion,10,2.1,12.03.2025 0:00:00,https://assets.warhammer-community.com/eng_warhammer40000_legends_field_manual_march_2025-uvwunjcopz-uo7n0c9fuk.pdf
+236,Horus Heresy Legends: Field Manual,Expansion,10,1,17.09.2024 0:00:00,https://assets.warhammer-community.com/warhammer40000_legends_heresyfieldmanual_eng_24.09-kwdsyfxdfh.pdf
+237,Horus Heresy Legends: Adeptus Astartes,Datasheet,10,,17.09.2024 0:00:00,https://assets.warhammer-community.com/warhammer40000_legends_heresyadeptusastartes_eng_24.09-rdmyjwqk0k.pdf
+238,Imperial Armour: Space Marines,Datasheet,10,,17.09.2024 0:00:00,https://assets.warhammer-community.com/warhammer40000_imperialarmour_spacemarines_eng_24.09-lkat22ej96.pdf
+239,Legends: Space Marines,Datasheet,10,,17.09.2024 0:00:00,https://assets.warhammer-community.com/warhammer40000_legends_spacemarines_eng_24.09-axmokvkcu8.pdf
+240,Legends: Heretic Astartes,Datasheet,10,,17.09.2024 0:00:00,https://assets.warhammer-community.com/warhammer40000_legends_hereticastartes_eng_24.09-8p0d31vptu.pdf
+241,Horus Heresy Legends: Heretic Astartes,Datasheet,10,,17.09.2024 0:00:00,https://assets.warhammer-community.com/warhammer40000_legends_heresyhereticastartes_eng_24.09.13-c2r9i7kq08.pdf
+242,Imperial Armour: Orks,Datasheet,10,,17.09.2024 0:00:00,https://assets.warhammer-community.com/warhammer40000_imperialarmour_orks_eng_24.09-cuxd1d7zqo.pdf
+243,Legends: Orks,Datasheet,10,,16.10.2024 0:00:00,https://assets.warhammer-community.com/warhammer40000_legends_orks_eng_16.10.pdf
+244,Imperial Armour: Necrons,Datasheet,10,,17.09.2024 0:00:00,https://assets.warhammer-community.com/warhammer40000_imperialarmour_necrons_eng_24.09-foeoioac4q.pdf
+245,Legends: Necrons,Datasheet,10,,17.09.2024 0:00:00,https://assets.warhammer-community.com/warhammer40000_legends_necrons_eng_24.09-csocx5mprj.pdf
+246,Legends: Blood Angels,Datasheet,10,,16.10.2024 0:00:00,https://assets.warhammer-community.com/warhammer40000_legends_bloodangels_eng_16.10.pdf
+247,Imperial Armour: Astra Militarum,Datasheet,10,,19.02.2025 0:00:00,https://assets.warhammer-community.com/eng_wh40k_imperial_armour_astra_militarum_feb25-lbctgzule5-nyvjt8tlbl.pdf
+249,Legends: Astra Militarum,Datasheet,10,,19.02.2025 0:00:00,https://assets.warhammer-community.com/eng_wh40k_legends_datasheet_astra_militarum_feb25-xqnjebk2vx-iuygj9zq0n.pdf
+250,Legends: Adeptus Mechanicus,Datasheet,10,,17.09.2024 0:00:00,https://assets.warhammer-community.com/warhammer40000_legends_adeptusmechanicus_eng_24.09-6go5lero8q.pdf
+251,Horus Heresy Legends: Adeptus Mechanicum,Datasheet,10,,17.09.2024 0:00:00,https://assets.warhammer-community.com/warhammer40000_legends_heresyadeptusmechanicum_eng_24.09-rietkvpcn1.pdf
+252,Imperial Armour: Adeptus Custodes,Datasheet,10,,16.10.2024 0:00:00,https://assets.warhammer-community.com/warhammer40000_imperialarmour_adeptuscustodes_eng_16.10.pdf
+253,Legends: Death Guard,Datasheet,10,,17.09.2024 0:00:00,https://assets.warhammer-community.com/warhammer40000_legends_deathguard_eng_24.09-mirpalnteg.pdf
+254,Legends: Legiones Daemonica,Datasheet,10,,12.03.2025 0:00:00,https://assets.warhammer-community.com/eng_warhammer40000_legends_datasheet_cards_legiones_daemonica_march_2025-udjavv6xgl-7tycn3ueiw.pdf
+255,Imperial Armour: T’au Empire,Datasheet,10,,17.09.2024 0:00:00,https://assets.warhammer-community.com/warhammer40000_imperialarmour_t'au_eng_24.09-ztpb0t0qgc.pdf
+256,Legends: T’au Empire,Datasheet,10,,17.09.2024 0:00:00,https://assets.warhammer-community.com/warhammer40000_legends_t'au_eng_24.09-dfh05u5var.pdf
+257,Legends: Aeldari,Datasheet,10,,23.04.2025 0:00:00,https://assets.warhammer-community.com/eng_23-8hbccy3h1i-ljsv8m3xwd.pdf
+258,Imperial Armour: Aeldari,Datasheet,10,,05.02.2025 0:00:00,https://assets.warhammer-community.com/eng_wh40k_imperial_armour_aeldari_fev25-y0ousahanh-a9pbfvswbl.pdf
+259,Agents of the Imperium,Codex,10,1.4,12.09.2025 0:00:00,https://assets.warhammer-community.com/eng_17-09_warhammer40000_codex_faqs_and_errata_imperial_agents-99xyh8dtl5-tdry3deuu6.pdf
+260,Legends: Agents of the Imperium,Datasheet,10,,17.09.2024 0:00:00,https://assets.warhammer-community.com/warhammer40000_legends_agentsoftheimperium_eng_24.09-kpzfgqkce7.pdf
+261,Imperial Armour: Grey Knights,Datasheet,10,,17.09.2024 0:00:00,https://assets.warhammer-community.com/warhammer40000_imperialarmour_greyknights_eng_24.09-jng83kzkkg.pdf
+262,Legends: Grey Knights,Datasheet,10,,17.09.2024 0:00:00,https://assets.warhammer-community.com/warhammer40000_legends_greyknights_eng_24.09-t3kzfu3wrq.pdf
+263,Imperial Armour: Imperial Knights,Datasheet,10,,18.06.2025 0:00:00,https://assets.warhammer-community.com/eng_jun25_wh40k_imperial_armour_imperial_knights-wwjhzxuyil-pnq2kex2l8.pdf
+264,Legends: Adepta Sororitas,Datasheet,10,,17.09.2024 0:00:00,https://assets.warhammer-community.com/warhammer40000_legends_adeptasororitas_eng_24.09-4kjkpkrkvi.pdf
+265,Legends: Genestealer Cults,Datasheet,10,,17.09.2024 0:00:00,https://assets.warhammer-community.com/warhammer40000_legends_genestealercults_eng_24.09-nckgwlqh3r.pdf
+267,Legends: Drukhari,Datasheet,10,,19.02.2025 0:00:00,https://assets.warhammer-community.com/eng_warhammer40000_legends_datasheet_cards_drukhari-dbm6tdwqpy-07onyf6jqf.pdf
+268,Imperial Armour: Chaos Knights,Datasheet,10,,18.06.2025 0:00:00,https://assets.warhammer-community.com/eng_wh40k_imperial_armour_chaos_knights-lwvqapfce9-x2pmpq6cjl.pdf
+269,Legends: Space Wolves,Datasheet,10,,17.09.2024 0:00:00,https://assets.warhammer-community.com/warhammer40000_legends_spacewolves_eng_24.09-i6lfi5oekn.pdf
+270,Imperial Armour: Titans,Index,10,,17.09.2024 0:00:00,https://assets.warhammer-community.com/warhammer40000_imperialarmour_titans_eng_24.09-3bctgolwmn.pdf
+271,Legends: Unaligned Forces,Datasheet,10,,17.09.2024 0:00:00,https://assets.warhammer-community.com/warhammer40000_legends_unaligned_eng_24.09-5ssd1gtiok.pdf
+273,Games Workshop: Grotmas Gitz,Datasheet,10,,24.11.2023 0:00:00,https://www.warhammer-community.com/wp-content/uploads/2023/11/kbp3w1r7xLNa8PRL.pdf
+276,Legends: Dark Angels,Datasheet,10,,17.09.2024 0:00:00,https://assets.warhammer-community.com/warhammer40000_legends_darkangels_eng_24.09-jtwifszi9t.pdf
+278,Black Library: Ufthak Blackhawk,Datasheet,10,,17.09.2024 0:00:00,https://assets.warhammer-community.com/warhammer40000_legends_blacklibraryufthakblackhawk_eng_24.09-bebxiiv0ch.pdf
+280,Emperor’s Children,Codex,10,1.1,09.07.2025 0:00:00,https://assets.warhammer-community.com/eng_09-07_warhammer40000_codex_faqsanderrata_emperor's_children-gfq6xyaqzj-bc75qyhghe.pdf
+284,Black Library: Celestian Sacresant Aveline,Datasheet,10,,17.09.2024 0:00:00,https://assets.warhammer-community.com/warhammer40000_legends_blacklibrarycelestiansacresantaveline_eng_24.09-qdhbqp2lq9.pdf
+285,Boarding Actions,Expansion,10,1.1,09.07.2025 0:00:00,https://assets.warhammer-community.com/eng_09-07_warhammer40000_other_rules_boarding_actions_companion-hyatd8cog7-wpqvdzf1mt.pdf
+286,Index Cards,Rulebook,10,2.1,18.06.2025 0:00:00,https://assets.warhammer-community.com/eng_jun25_wh40k_index_card_errata-tdmixllgob-ahj9p6yuhz.pdf
+287,Legends: Ultramarines,Datasheet,10,,17.09.2024 0:00:00,https://assets.warhammer-community.com/warhammer40000_legends_ultramarines_eng_24.09-2yceq0oswk.pdf
+289,Grotmas Calendar: Death Guard - Flyblown Host,Expansion,10,,14.05.2025 0:00:00,https://assets.warhammer-community.com/eng_may25_wh40k_advent_detachment_death_guard_flyblown_host-ctcvgoxooj-j7fmabkcfj.pdf
+290,Grotmas Calendar: Dark Angels - Lion's blade Task force,Expansion,10,,02.12.2024 0:00:00,https://assets.warhammer-community.com/eng_warhammer40000_grotmas_detachment_dark_angels_lions_blade_task_force-(1)-qz67gqn1rv-kh6wjkwbfe.pdf
+291,Grotmas Calendar: Tyranids - Warrior Bioform Onslaught,Expansion,10,,03.12.2024 0:00:00,https://assets.warhammer-community.com/grotmas_detachment_tyranids_warrior_bioform_onslaught_eng_03-hjxcb4aloh.pdf
+292,Grotmas Calendar: Thousand Sons - Hexwarp Thrallband,Expansion,10,,15.01.2025 0:00:00,https://assets.warhammer-community.com/eng_warhammer_40000_thousand_sons_hexwarp_thrallband_grotmas_detachment_2024-zihfkyzjs0-9uuku2imuk.pdf
+293,Grotmas Calendar: Adeptus Mechanicus - Haloscreed Battle Clade,Expansion,10,,15.01.2025 0:00:00,https://assets.warhammer-community.com/eng_grotmas_detachment_adeptus_mechanicus_haloscreed_battle_clade_jan25-fvg9g6vly3-7gwdrussjr.pdf
+294,Grotmas Calendar: Necrons - Starshatter Arsenal,Expansion,10,,15.01.2025 0:00:00,https://assets.warhammer-community.com/eng_grotmas_detachments_necrons_advent_starshatter_arsenal_jan25-yhfxcd8ucv-3xshpvoybu.pdf
+295,"Warhammer 40,000: Space Marine 2 – Recruit Edition (Lieutenant Titus)",Datasheet,10,,03.12.2024 0:00:00,https://assets.warhammer-community.com/eng_warhammer40000_otherrules_lieutenant_titus-dnbrnzghit-t5vn705bzr.pdf
+296,Grotmas Calendar: Adeptus Custodes - Solar Spearhead,Expansion,10,,12.03.2025 0:00:00,https://assets.warhammer-community.com/eng_warhammer40000_adeptus_custodes_solar_spearhead_march_2025-eogzlevyde-jegmoftlr7.pdf
+297,Grotmas Calendar: Imperial Agents - Veiled Blade Elimination Force,Expansion,10,,08.12.2024 0:00:00,https://assets.warhammer-community.com/eng_warhammer40000_grotmas_detachment_imperial_agents_veiled_blade_elimination_force-rimn6rua3p-dtwran9ff4.pdf
+298,Grotmas Calendar: Imperial Knights - Questor Forgepact,Expansion,10,,09.12.2024 0:00:00,https://assets.warhammer-community.com/eng_wh40k_grotmas_detachments_imperial_knights_questor_forgepact_9_12-jq0t6zwvw2-vbklvikwvo.pdf
+299,Grotmas Calendar: Chaos Knights - Iconoclast Fiefdom,Expansion,10,,15.01.2025 0:00:00,https://assets.warhammer-community.com/eng_grotmas_detachments_chaos_knights_iconoclast_fiefdom_jan25-8uk4bmgc6t-mulyhgigpv.pdf
+300,Grotmas Calendar: Deathwatch,Index,10,,07.12.2024 0:00:00,https://assets.warhammer-community.com/eng_wh40k_grotmas_index_deathwatch_7_12_2024-jtxo505gbc-skehgnr7np.pdf
+301,Kill Team: Breaka Boyz,Datasheet,10,,11.12.2024 0:00:00,https://assets.warhammer-community.com/eng_wh40k_other_rules_breaka_boyz_datasheet_dec24-kmovtpw2p0-eahevdsebd.pdf
+302,Grotmas Calendar: Aeldari - Armoured Warhost,Expansion,10,,12.03.2025 0:00:00,https://assets.warhammer-community.com/eng_warhammer40000_aeldari_armoured_warhost_march_2025-398dagu2yk-d9zvxrmqcd.pdf
+304,Grotmas Calendar: Chaos Space Marines - Creations of Bile,Expansion,10,,12.12.2024 0:00:00,https://assets.warhammer-community.com/eng_warhammer40000_grotmas_detachment_chaos_space_marines_creations_of_bile-t7kle8wrix-efboacnkxv.pdf
+305,Grotmas Calendar: Grey Knights - Warpbane Task Force,Expansion,10,,12.09.2025 0:00:00,https://assets.warhammer-community.com/eng_17-09_warhammer40000_grotmas_detachment_grey_knights_warpbane_taskforce-wantm4szvi-cdotalvpqm.pdf
+306,Kill Team: Tankbustas,Datasheet,10,,11.12.2024 0:00:00,https://assets.warhammer-community.com/eng_wh40k_other_rules_tankbustas_datasheet_dec24-6eicyifewp-qv442klaiq.pdf
+308,Grotmas Calendar: Drukhari - Reaper's Wager,Expansion,10,,13.12.2024 0:00:00,https://assets.warhammer-community.com/eng_wh40k_grotmas_detachments_drukhari_reapers_wager_13_12-tyon6r3ayl-77b7nhqv3p.pdf
+309,Grotmas Calendar: Space Marines - Librarius Conclave,Expansion,10,,12.03.2025 0:00:00,https://assets.warhammer-community.com/eng_warhammer40000_space_marines_librarius_conclave_march_2025-nnrd1ataff-hx92airfa6.pdf
+310,Grotmas Calendar: Orks - Taktikal Brigade,Expansion,10,,12.03.2025 0:00:00,https://assets.warhammer-community.com/eng_warhammer40000_orks_taktikal_brigade_march_2025-fua86ogtm2-jiyhtibuh2.pdf
+311,Kill Team: Vespid Stingwings,Datasheet,10,,02.10.2024 0:00:00,https://assets.warhammer-community.com/unq0474_vespid_stingwings_datasheet-(1).pdf
+312,Kill Team: Nemesis Claw,Datasheet,10,,20.11.2024 0:00:00,https://assets.warhammer-community.com/eng_nemesis_claw_datasheet_card-hbjsmqk8aw-5gdhkm3hzf.pdf
+313,Grotmas Calendar: Astra Militarum - Bridgehead Strike,Expansion,10,,12.03.2025 0:00:00,https://assets.warhammer-community.com/eng_warhammer40000_astra_militarum_bridgehead_strike_march_2025-dv5zda89pw-yublwbxep4.pdf
+314,Grotmas Calendar: Chaos Daemons - Legion of Excess,Expansion,10,,12.09.2025 0:00:00,https://assets.warhammer-community.com/eng_17_09_wh40k_chaos-daemons_legion_of_excess-rfyipckebz-ydayk2rrxj.pdf
+315,Grotmas Calendar: Chaos Daemons - Scintillating Legion,Expansion,10,,16.12.2024 0:00:00,https://assets.warhammer-community.com/eng_warhammer40000_grotmas_detachment_chaos_daemons_scintillating_legion-ji9gwybbzp-aik9bpi1an.pdf
+316,Grotmas Calendar: Chaos Daemons - Blood Legion,Expansion,10,,16.12.2024 0:00:00,https://assets.warhammer-community.com/eng_warhammer40000_grotmas_detachment_khorne_blood_legion-i4npih6gtc-8u1qt6asuj.pdf
+317,Grotmas Calendar: Chaos Daemons - Plague Legion,Expansion,10,,16.12.2024 0:00:00,https://assets.warhammer-community.com/eng_warhammer40000_grotmas_detachment_nurgle_plague_legion-vvnwbnhwsw-mlgdjft147.pdf
+318,Grotmas Calendar: Leagues of Votann - Hearthband,Expansion,10,,12.09.2025 0:00:00,https://assets.warhammer-community.com/eng_17_09_wh40k_leagues_of_votann_hearthband_detachment-1pdnjphyvk-xh2ld99m3q.pdf
+319,Grotmas Calendar: Genestealer Cults - Final Day,Expansion,10,,18.12.2024 0:00:00,https://assets.warhammer-community.com/eng_warhammer40000_grotmas_detachment_genestealer_cults_final_day-4te5d8eosd-hjqv0oqt6k.pdf
+320,Grotmas Calendar: Adepta Sororitas - Champions of Faith,Expansion,10,,19.12.2024 0:00:00,https://assets.warhammer-community.com/eng_grotmas_detachment_adepta_sororitas_champions_of_faith_2024-tjhmu3zcmx-qrdjzsakhu.pdf
+321,Grotmas Calendar: Blood Angels - Angelic Inheritors,Expansion,10,,20.12.2024 0:00:00,https://assets.warhammer-community.com/eng_grotmas_detachment_blood_angels_angelic_inheritors_dec2024-zufazgwden-nkxjamjjtw.pdf
+322,Grotmas Calendar: T'au Empire - Auxiliary Cadre,Expansion,10,,21.12.2024 0:00:00,https://assets.warhammer-community.com/eng_grotmas_detachment_tau_empire_auxiliary_cadre_dec2024-6yhupsaegt-76m2hgazpd.pdf
+323,Grotmas Calendar: Black Templars - Wrathful Procession,Expansion,10,,22.12.2024 0:00:00,https://assets.warhammer-community.com/eng_warhammer40000_grotmas_detachment_black_templars_wrathful_procession-jwpjj16lnu-ivf0mpa7jg.pdf
+324,Grotmas Calendar: World Eaters - Vessels of Wrath,Expansion,10,,23.12.2024 0:00:00,https://assets.warhammer-community.com/eng_grotmas_detachment_world_eaters_vessels_of_wrath_dec2024-id2xjrtkac-mhbxx3xegb.pdf
+325,Grotmas Calendar: Space Wolves - Champions of Fenris,Expansion,10,,24.12.2024 0:00:00,https://assets.warhammer-community.com/eng_grotmas_detachment_space_wolves_champions_of_fenris_dec2024-tkdtrbhiou-dqvqflllav.pdf
+327,Black Library: Hell’s Last,Datasheet,10,,19.02.2025 0:00:00,https://assets.warhammer-community.com/eng_warhammer40000_promo_legends_astra_militarum_hells_last-gygvsznexr-qgd1638dmr.pdf
+328,T’au Empire - Experimental Prototype Cadre,Expansion,10,,12.03.2025 0:00:00,https://assets.warhammer-community.com/eng_warhammer40000_tau_empire_experimental_prototype_cadre_march_2025-4muuffe5bf-qos03inbrj.pdf
+329,Adeptus Custodes - Lions of the Emperor,Expansion,10,,12.03.2025 0:00:00,https://assets.warhammer-community.com/eng_may_2025_wh40k_adeptus_custodes_lions_of_the_emperor_detachment-5ej58wehjr-hin5cateh0.pdf
+330,Orks - More Dakka!,Expansion,10,,09.04.2025 0:00:00,https://assets.warhammer-community.com/eng_warhammer_40000_orks_more_dakka_april_2025-dypfehnxur-i3u7qozcom.pdf
+331,Kill Team: Sanctifiers (Agents of the Imperium),Datasheet,10,,14.05.2025 0:00:00,https://assets.warhammer-community.com/eng_14-05_warhammer_40000_other_rules_imperial_agents_sanctifiers_datasheet-li8vgbpihe-bgvoyocvj7.pdf
+332,Kill Team: Sanctifiers (Adepta Sororitas),Datasheet,10,,14.05.2025 0:00:00,https://assets.warhammer-community.com/eng_14-05_warhammer_40000_other_rules_adepta_sororitas_sanctifiers_datasheet-ikxbvjdzef-zmweoggk9t.pdf
+335,Death Korps of Krieg,Expansion,10,,23.04.2025 0:00:00,https://assets.warhammer-community.com/eng_23-04_warhammer40000_other_rules_astra_militarum_death_korp_of_krieg_datasheet-w4jezt0twq-hdnqb0dxdf.pdf
+336,Tyranids - Subterranean assault,Expansion,10,,09.07.2025 0:00:00,https://assets.warhammer-community.com/eng_09-07_warhammer40000_other_rules_tyranids_subterranean_assault-fy3w2qyitb-9qk1h9lwr5.pdf
+337,Raveners,Datasheet,10,,04.06.2025 0:00:00,https://assets.warhammer-community.com/eng_04-06_warhammer_40000_raveners_datasheets-dlnyibicfq-a89bcwy0vj.pdf
+338,Servitor Battleclade,Datasheet,10,,04.06.2025 0:00:00,https://assets.warhammer-community.com/eng_4-ruimiuzt2c.pdf
+339,Chaos Space Marines - Cabal of Chaos,Expansion,10,,09.07.2025 0:00:00,https://assets.warhammer-community.com/eng_09-07_warhammer40000_other_rules_chaos_space_marines_cabal_of_chaos-7rhobuav4f-vygfk2yrv4.pdf
+340,Dark Angels - Wrath of the Rock,Expansion,10,,12.09.2025 0:00:00,https://assets.warhammer-community.com/eng_17-09_warhammer40000_grotmas_detachment_dark_angels_wrath_of_the_rock-6estkruewt-vgj2fsfgmm.pdf
+343,Drop Pod,Datasheet,10,,09.07.2025 0:00:00,https://assets.warhammer-community.com/eng_09-07_warhammer40000_other_rules_space_marines_drop_pod-ubd1ln59ih-pw3qzixxxo.pdf
+344,Vulkan He’stan,Datasheet,10,,20.08.2025 0:00:00,https://assets.warhammer-community.com/eng_2008_wh40k_otherrules_vulkan_he'stan_datasheet-kjngjf7zxq-g9hjukrsjg.pdf
+345,Salamanders - Forgefather’s Seekers,Datasheet,10,,20.08.2025 0:00:00,https://assets.warhammer-community.com/eng_2008_wh40k_otherrules_forgefathers_seekers_detachment-l3mruk18pe-sij90gbfkb.pdf
+346,Aethon Shaan,Datasheet,10,,03.09.2025 0:00:00,https://assets.warhammer-community.com/eng_sept25_wh40k_otherrules_aethon-shaan_datasheet-aume5osgsj-mchgd7rakd.pdf
+347,Darnath Lysander,Datasheet,10,,03.09.2025 0:00:00,https://assets.warhammer-community.com/eng_sept25_wh40k_otherrules__darnath-lysander_datasheet-gnfteafrrw-iqqrixez33.pdf
+348,Raven Guard - Shadowmark Talon,Expansion,10,,03.09.2025 0:00:00,https://assets.warhammer-community.com/eng_sept25_wh40k_otherrules_raven_guard_detachment-u3ddsawhqo-rglddktfmu.pdf
+349,Imperial Fists - Emperor's Shield,Expansion,10,,03.09.2025 0:00:00,https://assets.warhammer-community.com/eng_sept25_wh40k_otherrules_imperial_fists_detachment-vihq7do2qg-igfw579kzt.pdf
