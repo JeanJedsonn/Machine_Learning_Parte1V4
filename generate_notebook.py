@@ -23,6 +23,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.feature_extraction.text import CountVectorizer
+import re
 
 # Reproducibility and Visuals
 import warnings
@@ -164,6 +165,30 @@ plt.tight_layout()
 plt.show()
 """))
 
+    cells.append(nbf.v4.new_markdown_cell("""### Factions that Stand Out
+Let's analyze which factions have the highest average attributes across the board.
+"""))
+
+    cells.append(nbf.v4.new_code_cell("""# Factions that stand out in key attributes
+attributes = ['T_Toughness', 'W_Wounds', 'M_Movement', 'cost_numeric']
+titles = ['Toughness', 'Wounds', 'Movement', 'Cost']
+
+fig, axes = plt.subplots(2, 2, figsize=(16, 12))
+axes = axes.flatten()
+
+for i, attr in enumerate(attributes):
+    # Calculate average attribute per faction
+    top_factions = data.groupby('faction_name')[attr].mean().sort_values(ascending=False).head(5)
+    
+    sns.barplot(x=top_factions.values, y=top_factions.index, ax=axes[i], palette="magma")
+    axes[i].set_title(f'Top 5 Factions by Average {titles[i]}')
+    axes[i].set_xlabel(f'Average {titles[i]}')
+    axes[i].set_ylabel('')
+
+plt.tight_layout()
+plt.show()
+"""))
+
     cells.append(nbf.v4.new_code_cell("""# Target Variable Analysis
 plt.figure(figsize=(12, 6))
 order = data['faction_name'].value_counts().index
@@ -214,6 +239,83 @@ plt.show()
 - `Toughness` and `Wounds` are highly correlated, which logically represents the "bulk" of a unit.
 - Cost strongly correlates with Wounds and Offensive stats, showing the point balancing of the game.
 - Boxplots show significant differences between factions: Adeptus Custodes generally exhibit higher toughness compared to Astra Militarum.
+"""))
+
+    cells.append(nbf.v4.new_markdown_cell("""### Cost Efficiency per Faction
+We can compute the cost-efficiency of factions by dividing key stats by `cost_numeric`. This reveals which factions get the most "value" per point.
+"""))
+
+    cells.append(nbf.v4.new_code_cell("""# Calculate efficiency metrics
+cost_data = data[data['cost_numeric'] > 0].copy()
+cost_data['Toughness_per_Cost'] = cost_data['T_Toughness'] / cost_data['cost_numeric']
+cost_data['Wounds_per_Cost'] = cost_data['W_Wounds'] / cost_data['cost_numeric']
+
+# Group by faction
+efficiency = cost_data.groupby('faction_name').agg({
+    'Toughness_per_Cost': 'mean',
+    'Wounds_per_Cost': 'mean'
+})
+
+print("--- Top 5 Factions: Toughness per Cost ---")
+display(efficiency.sort_values(by='Toughness_per_Cost', ascending=False)[['Toughness_per_Cost']].head(5))
+
+print("\\n--- Top 5 Factions: Wounds per Cost ---")
+display(efficiency.sort_values(by='Wounds_per_Cost', ascending=False)[['Wounds_per_Cost']].head(5))
+"""))
+
+    cells.append(nbf.v4.new_markdown_cell("""### Wargear Specialization (Melee vs Ranged)
+We can analyze the raw `DS_Wargear` data to determine the specialization of each faction. Do they prefer Melee weapons, or Ranged weapons? What is their average range?
+"""))
+
+    cells.append(nbf.v4.new_code_cell("""# Merge wargear with factions to analyze specialization
+wargear_faction = wargear.merge(datasheets[['datasheet_id', 'faction_id']], on='datasheet_id')
+wargear_faction = wargear_faction.merge(factions[['faction_id', 'faction_name']], on='faction_id')
+
+# Standardize weapon_type
+wargear_faction['is_melee'] = wargear_faction['weapon_type'].str.contains('Melee', case=False, na=False)
+wargear_faction['is_ranged'] = wargear_faction['weapon_type'].str.contains('Ranged', case=False, na=False)
+
+wargear_faction['Weapon Category'] = np.where(wargear_faction['is_melee'], 'Melee', 
+                                     np.where(wargear_faction['is_ranged'], 'Ranged', 'Other'))
+
+type_counts = wargear_faction.groupby(['faction_name', 'Weapon Category']).size().unstack(fill_value=0)
+if 'Melee' in type_counts.columns and 'Ranged' in type_counts.columns:
+    type_counts = type_counts[['Melee', 'Ranged']]
+    
+    # Calculate percentage
+    type_pct = type_counts.div(type_counts.sum(axis=1), axis=0) * 100
+    
+    # Plot Melee vs Ranged preference
+    type_pct.plot(kind='bar', stacked=True, figsize=(14, 6), colormap='Set1')
+    plt.title('Weapon Type Preference per Faction (Melee vs Ranged %)')
+    plt.ylabel('Percentage of Weapons (%)')
+    plt.legend(title='Weapon Type', bbox_to_anchor=(1.05, 1), loc='upper left')
+    plt.tight_layout()
+    plt.show()
+"""))
+    
+    cells.append(nbf.v4.new_code_cell("""# Analyze Range Preference
+def parse_range(r):
+    if pd.isna(r): return np.nan
+    r = str(r).lower()
+    if 'melee' in r: return 0.0
+    # extract first number
+    match = re.search(r'\d+', r)
+    if match: return float(match.group())
+    return np.nan
+
+wargear_faction['range_numeric'] = wargear_faction['range'].apply(parse_range)
+
+# Average range per faction
+avg_range = wargear_faction.groupby('faction_name')['range_numeric'].mean().sort_values(ascending=False)
+
+plt.figure(figsize=(14, 6))
+sns.barplot(x=avg_range.index, y=avg_range.values, palette='Blues_r')
+plt.title('Average Weapon Range per Faction (Including Melee as 0)')
+plt.xticks(rotation=90)
+plt.ylabel('Average Range (inches)')
+plt.tight_layout()
+plt.show()
 """))
 
     # 6. Feature Engineering
