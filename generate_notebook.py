@@ -7,7 +7,7 @@ def create_notebook():
     cells = []
 
     # 1. Header and Configuration
-    cells.append(nbf.v4.new_markdown_cell("""<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Escudo_de_la_Universidad_de_Carabobo.svg/1200px-Escudo_de_la_Universidad_de_Carabobo.svg.png" width="150" align="right">
+    cells.append(nbf.v4.new_markdown_cell("""<img src="images/Logo_de_la_Facultad_Experimental_de_Ciencia_y_Tecnología.svg" width="150" align="right">
 
 # Warhammer 40k Faction Prediction - EDA
 **University of Carabobo**  
@@ -55,7 +55,7 @@ We connect to the SQLite database `warhammer40k.db` which contains our raw table
 ### Excluded Data and Dimensionality Reduction
 To build a clean and focused analytical dataset, several tables and columns were discarded:
 **Discarded Tables:**
-- `sources`, `last_update`, `ds_options`, `ds_leader`, `ds_unit_compo`: Irrelevant metadata, external links, and composition limits that do not define a unit's combat profile.
+- `sources`, `last_update`, `ds_options`, `ds_leader`, `ds_unit_comp`: Irrelevant metadata, external links, and composition limits that do not define a unit's combat profile.
 - `abilities`, `detachment_abilities`, `enhancements`, `stratagems` (and their junction tables): Excluded because they are composed almost entirely of unstructured narrative text and lack numerical features directly usable for faction identification.
 
 **Discarded Columns from `Datasheets`:**
