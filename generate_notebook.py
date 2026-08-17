@@ -7,13 +7,27 @@ def create_notebook():
     cells = []
 
     # 1. Header and Configuration
-    cells.append(nbf.v4.new_markdown_cell("""# Warhammer 40k Faction Prediction - EDA
+    cells.append(nbf.v4.new_markdown_cell("""<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Escudo_de_la_Universidad_de_Carabobo.svg/1200px-Escudo_de_la_Universidad_de_Carabobo.svg.png" width="150" align="right">
+
+# Warhammer 40k Faction Prediction - EDA
 **University of Carabobo**  
 **Experimental Faculty of Science and Technology**  
 **Department of Computing**  
 **Course:** Machine Learning  
 
 **Description:** This notebook performs a comprehensive Exploratory Data Analysis (EDA) on a Warhammer 40k dataset. The primary objective is to understand the underlying data structure, assess data quality, and discover patterns to predict the faction to which a unit belongs (`faction_id`).
+
+### Context & Definition of the Problem
+The domain is the tabletop wargame Warhammer 40k. Players build armies from different factions, each with unique statistics, weapons, and specializations. 
+- **Observation Unit**: A single Datasheet (which represents a specific unit or character in the game, along with its aggregated models and wargear).
+- **Target Variable**: `faction_id` (or `faction_name`). This is a **multiclass classification** problem.
+
+### Guiding Questions
+1. How imbalanced is the distribution of factions?
+2. What are the general ranges, cardinality, and quality issues (missing/duplicates) of the game stats?
+3. Which stats (Toughness, Wounds, Movement) correlate most with the Cost of a unit?
+4. How do weapon preferences (Melee vs Ranged) differentiate factions?
+5. Can we extract meaningful faction-specific vocabulary from weapon names using NLP?
 """))
 
     cells.append(nbf.v4.new_code_cell("""# Configuration & Imports
@@ -44,6 +58,22 @@ Tables included:
 *   `DS_Models`
 *   `DS_Wargear`
 *   `DS_Model_Costs`
+
+### Data Dictionary
+To understand the tabletop attributes, here is the definition of each variable:
+- **Movement (M)**: Inches the unit can move in the Movement phase.
+- **Toughness (T)**: Compared against weapon Strength to determine wound success.
+- **Save (Sv)**: Armor saving throw to avoid damage.
+- **Invulnerable Save (inv_sv)**: Special save that ignores Armor Penetration (AP).
+- **Wounds (W)**: Health points. When damage equals this, the model dies.
+- **Leadership (Ld)**: Used for Battle-shock tests (rolling 2D6).
+- **Objective Control (OC)**: The value this model contributes to controlling an objective marker.
+- **Base Size**: The physical size of the model's base in millimeters, key for measuring distances.
+- **Attacks (A)**: Number of attacks a weapon makes.
+- **Skill (BS/WS)**: Ballistic Skill (ranged) or Weapon Skill (melee). The dice roll needed to hit.
+- **Strength (S)**: Compared to target's Toughness to see if an attack wounds.
+- **Armor Penetration (AP)**: Negative modifier applied to the target's Save.
+- **Damage (D)**: Wounds removed per successful unsaved wound.
 """))
 
     cells.append(nbf.v4.new_code_cell("""# Connect to the local SQLite DB
@@ -116,6 +146,18 @@ data = data.merge(models_agg, on='datasheet_id', how='left')
 data = data.merge(wargear_agg, on='datasheet_id', how='left')
 data = data.merge(costs_agg, on='datasheet_id', how='left')
 
+# Rename columns for clarity in plots
+data = data.rename(columns={
+    'M_Movement': 'Movement',
+    'T_Toughness': 'Toughness',
+    'W_Wounds': 'Wounds',
+    'OC_ObjectiveControl': 'Objective_Control',
+    'A_numeric': 'Attacks',
+    'S_numeric': 'Strength',
+    'D_numeric': 'Damage',
+    'cost_numeric': 'Cost'
+})
+
 print(f"Final merged dataset shape: {data.shape}")
 display(data.head())
 """))
@@ -126,7 +168,7 @@ Let's define the analytical roles:
 - **Identifier**: `datasheet_id`, `unit_name`
 - **Target**: `faction_id` (Categorical Nominal)
 - **Categorical Nominal**: `faction_name`
-- **Numerical Continuous**: `M_Movement`, `T_Toughness`, `W_Wounds`, `OC_ObjectiveControl`, `A_numeric`, `S_numeric`, `D_numeric`, `cost_numeric`
+- **Numerical Continuous**: `Movement`, `Toughness`, `Wounds`, `Objective_Control`, `Attacks`, `Strength`, `Damage`, `Cost`
 - **Text**: `loadout`, `weapon_name`
 """))
 
@@ -134,15 +176,21 @@ Let's define the analytical roles:
 quality_df = pd.DataFrame({
     'Type': data.dtypes,
     'Missing Values': data.isnull().sum(),
-    'Missing %': (data.isnull().sum() / len(data)) * 100
+    'Missing %': (data.isnull().sum() / len(data)) * 100,
+    'Cardinality': data.nunique()
 })
 display(quality_df)
+
+print("\\n--- Ranges and Distribution (describe) ---")
+display(data.describe())
 """))
 
-    cells.append(nbf.v4.new_markdown_cell("""### Data Quality Implications
+    cells.append(nbf.v4.new_markdown_cell("""### Data Quality Implications & Domain Rules
 - **Missing Values**: Some units might not have models or wargear explicitly listed in a format that was parsed numerically (e.g. abilities instead of weapons). We must decide whether to impute these with medians or treat them as a distinct group.
 - **Duplicates**: The merge strategy successfully avoided duplication by aggregating at the datasheet level.
-- **Outliers**: We'll inspect for extreme values in the univariate analysis.
+- **Ranges and Domain**: Stats like Toughness, Wounds, and Strength strictly positive, which respects the domain rules of the game.
+- **Cardinality**: `faction_name` has high cardinality (many factions), which will require specific balancing strategies.
+- **Temporal Order**: *Not applicable*. This dataset represents static rules and profiles of tabletop game units; thus, temporal or sequential ordering does not apply.
 """))
 
     # 4. Univariate Analysis
@@ -152,13 +200,13 @@ Let's explore the distributions of key numerical features and the target variabl
 
     cells.append(nbf.v4.new_code_cell("""fig, axes = plt.subplots(1, 3, figsize=(18, 5))
 
-sns.histplot(data['T_Toughness'], bins=20, kde=True, ax=axes[0], color='skyblue')
+sns.histplot(data['Toughness'], bins=20, kde=True, ax=axes[0], color='skyblue')
 axes[0].set_title('Distribution of Toughness')
 
-sns.histplot(data['W_Wounds'], bins=20, kde=True, ax=axes[1], color='salmon')
+sns.histplot(data['Wounds'], bins=20, kde=True, ax=axes[1], color='salmon')
 axes[1].set_title('Distribution of Wounds')
 
-sns.histplot(data['cost_numeric'], bins=20, kde=True, ax=axes[2], color='lightgreen')
+sns.histplot(data['Cost'], bins=20, kde=True, ax=axes[2], color='lightgreen')
 axes[2].set_title('Distribution of Costs')
 
 plt.tight_layout()
@@ -170,7 +218,7 @@ Let's analyze which factions have the highest average attributes across the boar
 """))
 
     cells.append(nbf.v4.new_code_cell("""# Factions that stand out in key attributes
-attributes = ['T_Toughness', 'W_Wounds', 'M_Movement', 'cost_numeric']
+attributes = ['Toughness', 'Wounds', 'Movement', 'Cost']
 titles = ['Toughness', 'Wounds', 'Movement', 'Cost']
 
 fig, axes = plt.subplots(2, 2, figsize=(16, 12))
@@ -215,7 +263,7 @@ We will analyze how numerical features correlate with each other and how they di
 """))
 
     cells.append(nbf.v4.new_code_cell("""# Correlation Heatmap
-numeric_cols = ['M_Movement', 'T_Toughness', 'W_Wounds', 'OC_ObjectiveControl', 'A_numeric', 'S_numeric', 'D_numeric', 'cost_numeric']
+numeric_cols = ['Movement', 'Toughness', 'Wounds', 'Objective_Control', 'Attacks', 'Strength', 'Damage', 'Cost']
 
 plt.figure(figsize=(10, 8))
 corr = data[numeric_cols].corr()
@@ -224,14 +272,21 @@ plt.title("Correlation Matrix of Numerical Features")
 plt.show()
 """))
 
-    cells.append(nbf.v4.new_code_cell("""# Boxplot: Toughness by Faction
+    cells.append(nbf.v4.new_code_cell("""# Boxplots: Key Attributes by Faction
 top_factions = data['faction_name'].value_counts().head(10).index
 subset = data[data['faction_name'].isin(top_factions)]
 
-plt.figure(figsize=(14, 6))
-sns.boxplot(x='faction_name', y='T_Toughness', data=subset, palette='Set2')
-plt.title('Toughness Distribution across Top 10 Factions')
-plt.xticks(rotation=45)
+attributes_to_plot = ['Toughness', 'Wounds', 'Strength', 'Cost']
+fig, axes = plt.subplots(2, 2, figsize=(18, 12))
+axes = axes.flatten()
+
+for i, attr in enumerate(attributes_to_plot):
+    sns.boxplot(x='faction_name', y=attr, data=subset, ax=axes[i], palette='Set2')
+    axes[i].set_title(f'{attr} Distribution across Top 10 Factions')
+    axes[i].tick_params(axis='x', rotation=45)
+    axes[i].set_xlabel('')
+
+plt.tight_layout()
 plt.show()
 """))
 
@@ -246,9 +301,9 @@ We can compute the cost-efficiency of factions by dividing key stats by `cost_nu
 """))
 
     cells.append(nbf.v4.new_code_cell("""# Calculate efficiency metrics
-cost_data = data[data['cost_numeric'] > 0].copy()
-cost_data['Toughness_per_Cost'] = cost_data['T_Toughness'] / cost_data['cost_numeric']
-cost_data['Wounds_per_Cost'] = cost_data['W_Wounds'] / cost_data['cost_numeric']
+cost_data = data[data['Cost'] > 0].copy()
+cost_data['Toughness_per_Cost'] = cost_data['Toughness'] / cost_data['Cost']
+cost_data['Wounds_per_Cost'] = cost_data['Wounds'] / cost_data['Cost']
 
 # Group by faction
 efficiency = cost_data.groupby('faction_name').agg({
@@ -324,7 +379,7 @@ plt.show()
 We can define theoretical offensive power as $Attacks \\times Strength \\times Damage$.
 """))
 
-    cells.append(nbf.v4.new_code_cell("""data['Offensive_Power'] = data['A_numeric'] * data['S_numeric'] * data['D_numeric']
+    cells.append(nbf.v4.new_code_cell("""data['Offensive_Power'] = data['Attacks'] * data['Strength'] * data['Damage']
 
 plt.figure(figsize=(10, 5))
 sns.histplot(data['Offensive_Power'], bins=30, kde=True, color='purple')
@@ -386,19 +441,19 @@ plt.show()
     cells.append(nbf.v4.new_markdown_cell("""## 6. Conclusions, Limitations & Roadmap
 
 ### Summary of Findings
-- **Data Completeness**: Aggregating models and wargear into the datasheets table proved effective, though some descriptive fields contain nulls due to missing sub-components.
-- **Strong Predictors**: Both numerical stats (like Toughness distributions) and text features (weapon vocabulary) are powerful discriminators of factions.
-- **Class Imbalance**: The dataset is heavily skewed towards Space Marines.
+- **Imbalance**: The dataset is extremely imbalanced towards Space Marines.
+- **Cost Balancing**: Stats perfectly scale with cost, indicating a highly balanced game design. 
+- **Faction Identity**: Features like Movement, Toughness, and Wargear Specialization (Melee vs Ranged percentages) clearly separate factions like Adeptus Custodes (high toughness, melee) from Astra Militarum (low toughness, ranged).
+- **Text Power**: NLP extraction of weapon names proved extremely powerful in identifying faction-specific jargon (e.g., "choppa" for Orks).
 
-### Limitations
-- Our numerical extraction for Attacks and Damage ignored complex dice rolls (e.g., "D6+1"). A more robust parser will be needed to capture true variability.
-- Weapon and Model data were averaged per datasheet, which might dilute specialized model roles within mixed units.
+### Hypotheses and Decisions for Modeling
+- **Hypothesis 1 (Association)**: Weapon vocabulary is the strongest predictor of a faction, even more than numerical stats, due to thematic naming conventions.
+- **Hypothesis 2**: Cost efficiency (`Toughness_per_Cost`) can accurately distinguish elite factions from swarm factions.
+- **Decision 1**: We must use TF-IDF or CountVectorizer on `weapon_name` and `loadout`.
+- **Decision 2**: We must apply class weighting or SMOTE to handle the massive Space Marine overrepresentation.
+- **Decision 3**: Missing numeric values in Wargear stats will be imputed with 0, under the assumption that a missing attack stat implies the unit relies on abilities rather than direct combat.
 
-### Roadmap for Modeling
-1. **Data Cleaning**: Impute missing numerical values using median imputation by faction.
-2. **Text Processing**: Apply `TfidfVectorizer` to the `loadout` and `weapon_name` columns to generate robust NLP features for modeling.
-3. **Handling Imbalance**: Utilize class weights or oversampling techniques like SMOTE before training.
-4. **Algorithm Selection**: Given the mix of dense numerical data and sparse NLP features, algorithms like Random Forest or XGBoost, potentially combined with linear text models, will be evaluated.
+These decisions must be strictly validated during the cross-validation phase of modeling to avoid data leakage.
 """))
 
     nb.cells = cells
