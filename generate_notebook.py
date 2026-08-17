@@ -52,12 +52,30 @@ pd.set_option('display.max_columns', None)
     cells.append(nbf.v4.new_markdown_cell("""## 1. Data Loading and Integration
 We connect to the SQLite database `warhammer40k.db` which contains our raw tables. We will extract the 5 important tables and construct a unified analytical dataframe.
 
-Tables included:
-*   `Factions`
-*   `Datasheets`
-*   `DS_Models`
-*   `DS_Wargear`
-*   `DS_Model_Costs`
+### Excluded Data and Dimensionality Reduction
+To build a clean and focused analytical dataset, several tables and columns were discarded:
+**Discarded Tables:**
+- `sources`, `last_update`, `ds_options`, `ds_leader`, `ds_unit_compo`: Irrelevant metadata, external links, and composition limits that do not define a unit's combat profile.
+- `abilities`, `detachment_abilities`, `enhancements`, `stratagems` (and their junction tables): Excluded because they are composed almost entirely of unstructured narrative text and lack numerical features directly usable for faction identification.
+
+**Discarded Columns from `Datasheets`:**
+- `source_id`, `link`: External references and URLs.
+- `legend`, `role`: Narrative text with inefficient processing overhead.
+- `transport`, `virtual`, `leader_head`, `leader_footer`, `damaged_w`, `damaged_description`: Excluded due to massive amounts of missing data (nulls) and little to no predictive power.
+
+**Other Discarded Columns (from remaining tables):**
+- `line`, `line_in_wargear`: Internal row indices without analytical value.
+- `dice`: Dice rolling formulas (e.g., D6) that are too complex for simple numeric parsing.
+- `link` (from Factions): External URL.
+- `name` (from DS_Models), `description` (from DS_Wargear, DS_Model_Costs), `inv_sv_descr`, `base_size`, `base_size_descr`: Purely descriptive/narrative text or physical dimensions that do not directly contribute to the numeric combat profile.
+
+### Included Tables & Contributed Columns:
+*   **`Factions`**: `name` (extracted as `faction_name`).
+*   **`Datasheets`**: `id`, `name` (extracted as `unit_name`), `faction_id`, and `loadout`.
+*   **`DS_Models`**: `M`, `T`, `Sv`, `inv_sv`, `W`, `Ld`, and `OC` (averaged per datasheet).
+*   **`DS_Wargear`**: `A`, `BS_WS`, `S`, `AP`, `D`, `range`, `type`, and `name` (aggregated per datasheet).
+*   **`DS_Model_Costs`**: `cost` (averaged per datasheet).
+
 
 ### Data Dictionary
 To understand the tabletop attributes, here is the definition of each variable:
@@ -110,30 +128,58 @@ print(f"Datasheets: {len(datasheets)}, Models: {len(models)}, Wargear: {len(warg
 We will merge the datasets using `datasheet_id`. Since a single datasheet might have multiple models, weapons, and costs, joining them all directly will cause an explosion of rows (Cartesian product). To prevent this, we aggregate Wargear, Models, and Costs at the `datasheet_id` level before merging with the main `Datasheets` table.
 """))
 
-    cells.append(nbf.v4.new_code_cell("""# Aggregate Models (Average stats per datasheet)
-models_agg = models.groupby('datasheet_id').agg({
-    'M_Movement': 'mean',
-    'T_Toughness': 'mean',
-    'W_Wounds': 'mean',
-    'OC_ObjectiveControl': 'mean'
-}).reset_index()
-
-# Extract numeric values from Wargear attacks, strength, and damage (ignoring complex rolls like D6 for simple EDA)
+    cells.append(nbf.v4.new_code_cell("""# Extract numeric and text values
 def extract_numeric(val):
     try:
         return float(val)
     except:
         return np.nan
 
+def extract_skill(val):
+    if pd.isna(val): return np.nan
+    match = re.search(r'\d+', str(val))
+    if match: return float(match.group())
+    return np.nan
+
+def extract_range(val):
+    if pd.isna(val): return np.nan
+    if 'melee' in str(val).lower(): return 0.0
+    match = re.search(r'\d+', str(val))
+    if match: return float(match.group())
+    return np.nan
+
+# Extract models
+models['Sv_numeric'] = models['Sv_Save'].apply(extract_skill)
+models['Ld_numeric'] = models['Ld_Leadership'].apply(extract_skill)
+models['inv_sv_numeric'] = models['inv_sv_InvulnerableSave'].apply(extract_skill)
+
+# Aggregate Models (Average stats per datasheet)
+models_agg = models.groupby('datasheet_id').agg({
+    'M_Movement': 'mean',
+    'T_Toughness': 'mean',
+    'W_Wounds': 'mean',
+    'OC_ObjectiveControl': 'mean',
+    'Sv_numeric': 'mean',
+    'Ld_numeric': 'mean',
+    'inv_sv_numeric': 'mean'
+}).reset_index()
+
 wargear['A_numeric'] = wargear['A_Attacks'].apply(extract_numeric)
 wargear['S_numeric'] = wargear['S_Strength'].apply(extract_numeric)
 wargear['D_numeric'] = wargear['D_Damage'].apply(extract_numeric)
+wargear['AP_numeric'] = wargear['AP_ArmorPenetration'].apply(extract_numeric)
+wargear['Skill_numeric'] = wargear['BS_WS_Skill'].apply(extract_skill)
+wargear['Range_numeric'] = wargear['range'].apply(extract_range)
 
 wargear_agg = wargear.groupby('datasheet_id').agg({
     'A_numeric': 'mean',
     'S_numeric': 'mean',
     'D_numeric': 'mean',
-    'weapon_name': lambda x: ' '.join(x.dropna())
+    'AP_numeric': 'mean',
+    'Skill_numeric': 'mean',
+    'Range_numeric': 'mean',
+    'weapon_name': lambda x: ' '.join(x.dropna()),
+    'weapon_type': lambda x: ' '.join(x.dropna())
 }).reset_index()
 
 # Aggregate Costs
@@ -152,9 +198,16 @@ data = data.rename(columns={
     'T_Toughness': 'Toughness',
     'W_Wounds': 'Wounds',
     'OC_ObjectiveControl': 'Objective_Control',
+    'Sv_numeric': 'Save',
+    'Ld_numeric': 'Leadership',
+    'inv_sv_numeric': 'Invulnerable_Save',
     'A_numeric': 'Attacks',
     'S_numeric': 'Strength',
     'D_numeric': 'Damage',
+    'AP_numeric': 'Armor_Penetration',
+    'Skill_numeric': 'Skill',
+    'Range_numeric': 'Range',
+    'weapon_type': 'Weapon_Type',
     'cost_numeric': 'Cost'
 })
 
@@ -168,8 +221,8 @@ Let's define the analytical roles:
 - **Identifier**: `datasheet_id`, `unit_name`
 - **Target**: `faction_id` (Categorical Nominal)
 - **Categorical Nominal**: `faction_name`
-- **Numerical Continuous**: `Movement`, `Toughness`, `Wounds`, `Objective_Control`, `Attacks`, `Strength`, `Damage`, `Cost`
-- **Text**: `loadout`, `weapon_name`
+- **Numerical Continuous**: `Movement`, `Toughness`, `Save`, `Invulnerable_Save`, `Wounds`, `Leadership`, `Objective_Control`, `Attacks`, `Strength`, `Damage`, `Armor_Penetration`, `Skill`, `Range`, `Cost`
+- **Text**: `loadout`, `weapon_name`, `Weapon_Type`
 """))
 
     cells.append(nbf.v4.new_code_cell("""# Data Types and Missing Values
